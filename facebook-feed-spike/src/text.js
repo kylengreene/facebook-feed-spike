@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
-// import { Link } from 'react-router-dom';
-// import {
-//     HashRouter as Router,
-//     Route
-// } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+
 
 
 class TextPage extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = { text: '' } // You can also pass a Quill Delta here
+        this.handleChange = this.handleChange.bind(this)
+    }
 
+    handleChange(value) {
+        this.setState({ text: value })  
+    }
 
+    handleClick = () =>{
+        // let array =[this.state]
+    }
 
     render() {
-    
         return (
-            <div id="editor">
-                <p>Hello World!</p>
-                <p>Some initial <strong>bold</strong> text</p>
-                <p><br></br></p>
-</div>
+            <>
+            <ReactQuill value={this.state.text}
+                onChange={this.handleChange} />
+                
+                <button onClick={this.handleClick}>Submit</button>
 
+               <p>
+                   {this.handleClick.array.map}
+               </p>
+                </>
         )
     }
 }
