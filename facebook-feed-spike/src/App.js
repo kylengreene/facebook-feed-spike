@@ -5,20 +5,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div class="fb-page" data-href="https://www.facebook.com/KyleGreeneEV/" data-tabs="timeline" data-width=""
+        data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
+        data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/KyleGreeneEV/" class="fb-xfbml-parse-ignore"><a
+          href="https://www.facebook.com/KyleGreeneEV/">Kyle Greene: Engel &amp; Völkers</a></blockquote>
+      </div>
     </div>
   );
 }
