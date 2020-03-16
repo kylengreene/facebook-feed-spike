@@ -3,6 +3,7 @@ import './App.css';
 import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
 import ImageUploader from 'react-images-upload';
+import axios from 'axios';
 
 
 class ImagePage extends Component {
