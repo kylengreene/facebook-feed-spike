@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import ReactQuill from 'react-quill';
+
 import { connect } from 'react-redux';
 import ImageUploader from 'react-images-upload';
-import axios from 'axios';
+
 
 
 class ImagePage extends Component {
@@ -42,7 +42,7 @@ this.props.dispatch({
                 maxFileSize={5242880}
             />
 
-           {JSON.stringify (this.state)}
+    
         
            <button onClick={this.handleClick}>Send to Index</button>
            </>
