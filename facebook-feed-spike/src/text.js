@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ReactQuill from 'react-quill';
+import { connect } from 'react-redux';
 
 
 
@@ -8,16 +9,24 @@ class TextPage extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { text: '' } // You can also pass a Quill Delta here
+        this.state = { text: ''} // You can also pass a Quill Delta here
         this.handleChange = this.handleChange.bind(this)
     }
 
     handleChange(value) {
-        this.setState({ text: value })  
+        this.setState({text: value})  
+        console.log(this.state.text);
+        
     }
 
-    handleClick = () =>{
-        // let array =[this.state]
+    handleClick = (input) =>{
+        console.log(this.state);
+        
+      this.props.dispatch({
+          type: 'SET_TEXT',
+          payload: this.state
+      })
+       
     }
 
     render() {
@@ -26,14 +35,16 @@ class TextPage extends Component {
             <ReactQuill value={this.state.text}
                 onChange={this.handleChange} />
                 
-                <button onClick={this.handleClick}>Submit</button>
+                <button onClick={()=> this.handleClick(this.state.text)}>Submit</button>
 
-               <p>
-                   {this.handleClick.array.map}
-               </p>
+            
                 </>
         )
     }
 }
 
-export default TextPage;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+
+export default connect(mapReduxStateToProps)(TextPage);
