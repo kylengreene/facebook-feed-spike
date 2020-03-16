@@ -18,17 +18,33 @@ class ImagePage extends Component {
         this.setState({
             pictures: this.state.pictures.concat(picture),
         });
+        console.log(this.state);
+        
+    }
+
+    handleClick = () => {
+this.props.dispatch({
+    type:'UPLOAD_PHOTO',
+    payload: this.state
+})
     }
 
     render() {
         return (
+            <>
             <ImageUploader
                 withIcon={true}
+                withPreview={true}
                 buttonText='Choose images'
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}
             />
+
+           {JSON.stringify (this.state)}
+        
+           <button onClick={this.handleClick}>Send to Index</button>
+           </>
         );
     }
 }

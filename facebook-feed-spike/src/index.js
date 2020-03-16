@@ -14,11 +14,23 @@ const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
     yield takeEvery('SET_TEXT', setInput)
+    yield takeEvery('UPLOAD_PHOTO', instagram);
 }
 
 function* setInput(action){
     let sender = [action.payload]
-    yield put({ type: 'SET_QUILL', payload: sender })
+    yield put({ 
+        type: 'SET_QUILL', 
+        payload: sender 
+    })
+}
+
+function* instagram(action){
+    let draft= [action.payload]
+    yield put({
+        type: 'SET_PHOTO',
+        payload: draft
+    })
 }
 
 const quillReducer = (state = [], action) =>{
@@ -29,9 +41,20 @@ const quillReducer = (state = [], action) =>{
             return state;
     }
 }
+
+const photoReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_PHOTO':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 const storeInstance = createStore(
     combineReducers({
-        quillReducer
+        quillReducer,
+        photoReducer
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
